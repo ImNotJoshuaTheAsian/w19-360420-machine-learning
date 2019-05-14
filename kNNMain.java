@@ -40,13 +40,38 @@ public class kNNMain{
 */
     // TASK 5: Use the KNNClassifier class to determine the k nearest neighbors to a given DataPoint,
     // and make a print a predicted target label
-	KNNClassifier classifierK = new KNNClassifier(4);
+	KNNClassifier classifierK = new KNNClassifier(3);
 
 
 
     // TASK 6: loop over the datapoints in the held out test set, and make predictions for Each
     // point based on nearest neighbors in training set. Calculate accuracy of model.
+ 	double[] generations = new double[1000];
+	double counter = 0;
+	double accuracy = 0;
+	  
+	for (int h = 0; h < 1000; h++){
+		
+		List<DataPoint> dataList = DataSet.readDataSet(args[0]);
+		List<DataPoint>	testList = DataSet.getTrainingSet(dataList, 0.3);
+		List<DataPoint>	trainList = DataSet.getTrainingSet(dataList, 0.7);
 
+		for (int i = 0; i < testList.size(); i++) {
+
+			String predictionValue = classifier.predict(trainingList, Listset.get(i));
+			String actualValue = (testList.get(i)).getLabel();
+
+			if (predictionValue = actualValue){
+					counter++;
+			}
+		} 
+	 	accuracy = counter / testList.size()*100
+		generations[h] = accuracy
+		counter = 0;
+	}
+	  
+	System.out.println("Mean is" + mean(generations));
+	System.out.println("SD is " + standardDeviation(generations));
 
   }
 
