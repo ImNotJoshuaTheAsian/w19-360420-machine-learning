@@ -19,28 +19,20 @@ public class kNNMain{
 	System.out.println(hello.getLabel());
 	String outPut = Arrays.toString(hello.getX());
 	System.out.println(outPut);
-
-
     //TASK 2:Use the DataSet class to split the fullDataSet into Training and Held Out Test Dataset
 	
 	List<DataPoint> testSet = DataSet.getTestSet(stuff, 0.2);
 	List<DataPoint> trainingSet = DataSet.getTrainingSet(stuff, 0.8);
-
-
     // TASK 3: Use the DataSet class methods to plot the 2D data (binary and multi-class)
-
-
-
     // TASK 4: write a new method in DataSet.java which takes as arguments to DataPoint objects,
     // and returns the Euclidean distance between those two points (as a double)
-
 		double distanceT = DataSet.distanceEuclid(testSet.get(2), testSet.get(4));
 	
 		System.out.println(distanceT);
 */
     // TASK 5: Use the KNNClassifier class to determine the k nearest neighbors to a given DataPoint,
     // and make a print a predicted target label
-	KNNClassifier classifierK = new KNNClassifier(3);
+	KNNClassifier classifier = new KNNClassifier(3);
 
 
 
@@ -52,21 +44,21 @@ public class kNNMain{
 	  
 	for (int h = 0; h < 1000; h++){
 		
-		List<DataPoint> dataList = DataSet.readDataSet(args[0]);
-		List<DataPoint>	testList = DataSet.getTrainingSet(dataList, 0.3);
-		List<DataPoint>	trainList = DataSet.getTrainingSet(dataList, 0.7);
+		List<DataPoint> dataSet = DataSet.readDataSet(args[0]);
+		List<DataPoint>	testSet = DataSet.getTrainingSet(dataSet, 0.3);
+		List<DataPoint>	trainingSet = DataSet.getTrainingSet(dataSet, 0.7);
 
-		for (int i = 0; i < testList.size(); i++) {
+		for (int i = 0; i < testSet.size(); i++) {
 
-			String predictionValue = classifier.predict(trainingList, Listset.get(i));
-			String actualValue = (testList.get(i)).getLabel();
+			String predictionValue = classifier.predict(trainingSet, testSet.get(i));
+			String actualValue = (testSet.get(i)).getLabel();
 
-			if (predictionValue = actualValue){
+			if (predictionValue == actualValue){
 					counter++;
 			}
 		} 
-	 	accuracy = counter / testList.size()*100
-		generations[h] = accuracy
+	 	accuracy = counter / testSet.size()*100;
+		generations[h] = accuracy;
 		counter = 0;
 	}
 	  
