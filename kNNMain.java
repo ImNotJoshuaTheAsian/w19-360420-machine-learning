@@ -10,7 +10,7 @@ public class kNNMain{
 
     // TASK 1: Use command line arguments to point DataSet.readDataSet method to
     // the desired file. Choose a given DataPoint, and print its features and label	]
-	
+	/*
 	String PATH_TO_ARRAY = args[0];
 	
 	System.out.println(PATH_TO_ARRAY);
@@ -37,9 +37,10 @@ public class kNNMain{
 		double distanceT = DataSet.distanceEuclid(testSet.get(2), testSet.get(4));
 	
 		System.out.println(distanceT);
-
+*/
     // TASK 5: Use the KNNClassifier class to determine the k nearest neighbors to a given DataPoint,
     // and make a print a predicted target label
+	KNNClassifier classifierK = new KNNClassifier(4);
 
 
 
