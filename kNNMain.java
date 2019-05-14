@@ -9,11 +9,22 @@ public class kNNMain{
   public static void main(String... args) throws FileNotFoundException{
 
     // TASK 1: Use command line arguments to point DataSet.readDataSet method to
-    // the desired file. Choose a given DataPoint, and print its features and label
-
+    // the desired file. Choose a given DataPoint, and print its features and label	]
+	
+	String PATH_TO_ARRAY = args[0];
+	
+	System.out.println(PATH_TO_ARRAY);
+	List<DataPoint> stuff = DataSet.readDataSet(PATH_TO_ARRAY);
+	DataPoint hello = stuff.get(30);
+	System.out.println(hello.getLabel());
+	String outPut = Arrays.toString(hello.getX());
+	System.out.println(outPut);
 
 
     //TASK 2:Use the DataSet class to split the fullDataSet into Training and Held Out Test Dataset
+	
+	List<DataPoint> testSet = DataSet.getTestSet(stuff, 0.2);
+	List<DataPoint> trainingSet = DataSet.getTrainingSet(stuff, 0.8);
 
 
     // TASK 3: Use the DataSet class methods to plot the 2D data (binary and multi-class)
@@ -23,7 +34,9 @@ public class kNNMain{
     // TASK 4: write a new method in DataSet.java which takes as arguments to DataPoint objects,
     // and returns the Euclidean distance between those two points (as a double)
 
-
+		double distanceT = DataSet.distanceEuclid(testSet.get(2), testSet.get(4));
+	
+		System.out.println(distanceT);
 
     // TASK 5: Use the KNNClassifier class to determine the k nearest neighbors to a given DataPoint,
     // and make a print a predicted target label
